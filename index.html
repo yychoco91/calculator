@@ -6,7 +6,39 @@
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script></script>
+    <script src="http://Learning-Fuze.github.io/calculator/calculator.js"></script>
+    <script>
+        function callback(type,value,item) {
+            switch (value){
+                case undefined:
+                    $("#output").html("");
+                    break;
+                default:
+                    $("#output").html(value);
+                    break;
+            }
+        }
+
+        var my_calculator=new calculator(callback);
+        
+        $(document).ready(function () {
+            $('button').on('click', function () {
+                var val= $(this).text();
+                switch (val){
+                    case 'CE':
+                        my_calculator.allClear();
+                        break;
+                    default:
+                        my_calculator.addItem($(this).text());
+                        break;
+                }
+
+            });
+
+        })
+
+
+    </script>
 </head>
 
 <body>
@@ -25,38 +57,37 @@
     <div id ="output"></div>
     <div id = "main">
 
-
         <div class ="rows">
             <button class =" clear" id ="clear">C</button>
             <button class =" clear" id ="CE">CE</button>
-            <button class ="button-style operator"  value ="÷"> ÷  </button>
+            <button class ="button-style operator"  value ="/">/</button>
         </div>
 
         <div class="rows">
             <button class ="button-style number"   value="7">7</button>
             <button class ="button-style number" value="8">8</button>
             <button class ="button-style number"  value ="9"> 9 </button>
-            <button class ="button-style operator"  value ="x"> x </button>
+            <button class ="button-style operator"  value ="x">x</button>
         </div>
 
         <div class ="rows">
             <button class ="button-style number"   value="4">4</button>
             <button class ="button-style number" value="5">5</button>
             <button class ="button-style number"  value ="6"> 6 </button>
-            <button class ="button-style operator"  value ="-"> - </button>
+            <button class ="button-style operator"  value ="-">-</button>
         </div>
 
         <div class ="rows">
             <button class ="button-style number"   value="1">1</button >
             <button class ="button-style number" value="2">2</button>
             <button class ="button-style number"  value ="3"> 3 </button>
-            <button class ="button-style operator"  value ="+"> + </button>
+            <button class ="button-style operator"  value ="+">+</button>
         </div>
 
         <div class ="rows">
             <button class ="zero" value="0"> 0</button >
             <button class ="button-style number" value=".">.</button>
-            <button class ="button-style operator"  value ="3"> = </button>
+            <button class ="button-style operator"  value ="3">=</button>
 
         </div>
 
