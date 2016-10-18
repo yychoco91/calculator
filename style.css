@@ -2,64 +2,95 @@ header {
     width: 100vw;
     height: 72px;
     padding: .5em;
-    background-color: darkblue;
-
+    /*background-color: royalblue*/
 }
+
 h1{
     color: white;
+    font-family: Quicksand;
+    font-size: 45px;
     text-align: center;
     vertical-align: middle;
+    position: absolute;
+    margin: auto;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 .clear{
     background-color: dodgerblue;
     color: #fff;
     font-size: 25px;
-    outline: none;
-    border-bottom:3px solid mediumblue ;
+    border:0;
+    border-radius:4px ;
+    border-bottom:3px solid deepskyblue ;
     margin-left: 10px;
     width:97px;
     height: 50px;
 }
 
-.zero{
-    background-color: #000;
+#zero{
+    background:deepskyblue;
     color: #fff;
     font-size: 25px;
-    outline: none;
-    border-bottom:3px solid gray ;
     margin-left: 10px;
     width:135px;
     height: 50px;
+    border:0;
+    border-radius:4px ;
+    border-bottom:3px solid gray ;
 }
 
+#equal_button{
+    background-color:mediumpurple;
+    color: #fff;
+    font-size: 25px;
+    border:0px;
+    border-bottom:3px solid lightsteelblue ;
+}
 
 body{
-    background-color: lightgray;
+    background: linear-gradient(270deg, #df5277, #1188ff, #db5640);
+    background-size: 600% 600%;
+    animation: Gradient 60s ease infinite;
+}
+
+@keyframes Gradient {
+    0%{background-position: 0% 50%}
+    50%{background-position: 100% 50%}
+    100%{background-position: 0% 50%}
 }
 
 .calculator{
     position: absolute;
     margin: auto;
-    top: 0;
+    top: 30px;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 345px;
-    height: 440px;
-    background-color:darkgray;
+    width: 330px;
+    height: 450px;
+    background: linear-gradient(darkturquoise,pink);
+    opacity: 0.9;
+    filter:alpha(opacity=80);
+    border-radius: 10px;
 }
+
 
 #output{
-    width: 300px;
+    width: 290px;
     height:40px;
-    background:deepskyblue;
-    color:#fff;
+    background:lightblue;
     display: block;
-    margin:15px auto;  /*top bottom left right*/
-     padding-top: 20px;
-
+    margin:18px auto;  /*top bottom left right*/
+    padding-top: 20px;
+    text-align: right;
+    font-size: 40px;
+    font-family: Quicksand;
+    color:royalblue;
+    border-radius: 5px;
 }
-
 
 #button{
     border:0px;
@@ -68,8 +99,8 @@ body{
 
 .rows{
     width: 400px ;
-    margin-top: 15px ;
-    margin-left: 20px ;
+    margin-top: 20px ;
+    margin-left: 15px ;
 }
 
 .button-style{
@@ -80,19 +111,18 @@ body{
 }
 
 .number{
-    background-color:#000;
+    background:deepskyblue;
     color: #fff;
     font-size: 25px;
-    outline: none;
+    border:0;
     border-bottom:3px solid gray ;
-
-}
+   }
 
 .operator{
-    background-color:orangered;
+    background-color:mediumpurple;
     color: #fff;
     font-size: 25px;
-    outline: none;
-    border-bottom:3px solid darkred;
+    border:0px;
+    border-bottom:3px solid lightsteelblue ;
 }
 

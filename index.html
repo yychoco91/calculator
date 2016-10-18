@@ -5,40 +5,109 @@
     <title>Calculator</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://Learning-Fuze.github.io/calculator/calculator.js"></script>
-    <script>
-        function callback(type,value,item) {
-            switch (value){
-                case undefined:
-                    $("#output").html("");
-                    break;
-                default:
-                    $("#output").html(value);
-                    break;
-            }
-        }
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 
-        var my_calculator=new calculator(callback);
-        
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!--<script src="http://Learning-Fuze.github.io/calculator/calculator.js"></script>-->
+    <script>
+
         $(document).ready(function () {
+            var input_array=[''];
+            var input_index=0;
+
             $('button').on('click', function () {
-                var val= $(this).text();
-                switch (val){
-                    case 'CE':
-                        my_calculator.allClear();
-                        break;
-                    default:
-                        my_calculator.addItem($(this).text());
-                        break;
+                var val = $(this).text();
+            })
+                apply_click_handlers();
+
+                function apply_click_handlers(){
+                    $('.number').click(input_number);
+                    $('.operator').click(input_operator);
+                    $('#equal_button').click(calculate);
+                    $('.clear').click(clear);
                 }
 
-            });
+                function input_number(){
+                    console.log( $(this).text());
+                    input_array[input_index] += $(this).text();
+                    $("#output").empty();
+                    $("#output").append(input_array);
 
-        })
+                    console.log(input_array);
+                }
+
+                function input_operator(){
+                    //do I have enough to do math?
+                    //as long as do math returns it to the original state
+                    if (input_array.length===3){
+                        calculate();
+                    }
+
+                    input_index++;
+                    input_array[input_index] = $(this).text();
+                    console.log(input_array);
+                    input_index++;
+                    input_array[input_index] = '';
+                }
+
+                function calculate(){
+                    var operator=input_array[1];
+                    var num1=parseFloat(input_array[0]);
+                    var num2=parseFloat(input_array[2]);
+                    var total=0;
+
+                   switch (operator){
+                       case "+":
+                           total=num1+num2;
+                           input_array=[''];
+                           input_array[0]=total;
+                           $("#output").empty();
+                           $("#output").append(total);
+                            input_index=0;
+                            console.log(total);
+                           break;
+                       case "-":
+                           total=num1-num2;
+                           input_array=[''];
+                           input_array[0]=total;
+                           $("#output").empty();
+                           $("#output").append(total);
+                           input_index=0;
+                           console.log(total);
+                           break;
+                       case "x":
+                           total=num1*num2;
+                           input_array=[''];
+                           input_array[0]=total;
+                           $("#output").empty();
+                           $("#output").append(total);
+                           input_index=0;
+                           console.log(total);
+                           break;
+                       case "/":
+                           total=num1/num2;
+                           input_array=[''];
+                           input_array[0]=total;
+                           $("#output").empty();
+                           $("#output").append(total);
+                           input_index=0;
+                           console.log(total);
+                           break;
+                        default:
+                           total=0;
+                   }
+                }
+
+                function clear() {
+                   $("#output").empty();
+                    input_array=[''];
+                    input_index=0;
+                }
+        });
 
 
     </script>
+
 </head>
 
 <body>
@@ -47,10 +116,7 @@
 
     <h1>Calculator</h1>
 
-
 </header>
-
-<br>
 
 <div class="calculator">
 
@@ -66,31 +132,30 @@
         <div class="rows">
             <button class ="button-style number"   value="7">7</button>
             <button class ="button-style number" value="8">8</button>
-            <button class ="button-style number"  value ="9"> 9 </button>
+            <button class ="button-style number"  value ="9">9</button>
             <button class ="button-style operator"  value ="x">x</button>
         </div>
 
         <div class ="rows">
             <button class ="button-style number"   value="4">4</button>
             <button class ="button-style number" value="5">5</button>
-            <button class ="button-style number"  value ="6"> 6 </button>
+            <button class ="button-style number"  value ="6">6</button>
             <button class ="button-style operator"  value ="-">-</button>
         </div>
 
         <div class ="rows">
             <button class ="button-style number"   value="1">1</button >
             <button class ="button-style number" value="2">2</button>
-            <button class ="button-style number"  value ="3"> 3 </button>
+            <button class ="button-style number"  value ="3">3</button>
             <button class ="button-style operator"  value ="+">+</button>
         </div>
 
         <div class ="rows">
-            <button class ="zero" value="0"> 0</button >
+            <button class ="button-style number" id="zero" value="0">0</button >
             <button class ="button-style number" value=".">.</button>
-            <button class ="button-style operator"  value ="3">=</button>
+            <button class ="button-style" id="equal_button" value ="=">=</button>
 
         </div>
-
 
     </div>
 
