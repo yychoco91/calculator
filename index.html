@@ -42,7 +42,6 @@
                     if (input_array.length===3){
                         calculate();
                     }
-
                     input_index++;
                     input_array[input_index] = $(this).text();
                     console.log(input_array);
@@ -51,51 +50,53 @@
                 }
 
                 function calculate(){
-                    var operator=input_array[1];
-                    var num1=parseFloat(input_array[0]);
-                    var num2=parseFloat(input_array[2]);
-                    var total=0;
+                    //LFZ START
+                    var operator=input_array[1];         //select the operator in input_array at index 1, store it in variable operator
+                    var num1=parseFloat(input_array[0]); //Parses the number for input array at index 0 and stores it in variable num1
+                    var num2=parseFloat(input_array[2]); //Parses the number for input array at index 2 and stores it in variable num2
+                    var total=0;                         //create variable total and set to 0
 
-                   switch (operator){
-                       case "+":
-                           total=num1+num2;
-                           input_array=[''];
-                           input_array[0]=total;
-                           $("#output").empty();
-                           $("#output").append(total);
-                            input_index=0;
-                            console.log(total);
-                           break;
-                       case "-":
-                           total=num1-num2;
-                           input_array=[''];
-                           input_array[0]=total;
-                           $("#output").empty();
-                           $("#output").append(total);
-                           input_index=0;
-                           console.log(total);
-                           break;
-                       case "x":
-                           total=num1*num2;
-                           input_array=[''];
-                           input_array[0]=total;
-                           $("#output").empty();
-                           $("#output").append(total);
-                           input_index=0;
-                           console.log(total);
-                           break;
-                       case "/":
-                           total=num1/num2;
-                           input_array=[''];
-                           input_array[0]=total;
-                           $("#output").empty();
-                           $("#output").append(total);
-                           input_index=0;
-                           console.log(total);
-                           break;
-                        default:
-                           total=0;
+                   switch (operator){                   //begin switch loop if operator is equal to true
+                       case "+":                        // test to see if the operator is equal to '+'
+                           total=num1+num2;             // store the sum of num1+ num2 into total
+                           input_array=[''];            //set input array to empty string
+                           input_array[0]=total;        //set first index of input array to total
+                           $("#output").empty();        //clear display
+                           $("#output").append(total);  //append the value of total to the display
+                            input_index=0;              //set input index to 0
+                            console.log(total);         //console log total to make sure the sum is displaying
+                           break;                       //break out of the case
+                       case "-":                        //test to see if the operator is equal to '-'
+                           total=num1-num2;             // store the difference of num1-num2 into total
+                           input_array=[''];            //set input array to empty string
+                           input_array[0]=total;        //set first index of input array to total
+                           $("#output").empty();        //clear display
+                           $("#output").append(total);  //append the value of total to the display
+                           input_index=0;               //set input index to 0
+                           console.log(total);          //console log total to make sure the difference is displaying
+                           break;                       //break out of the case
+                       case "x":                        // test to see if the operator is equal to 'x'
+                           total=num1*num2;             // store the product of num1* num2 into total
+                           input_array=[''];            //set input array to empty string
+                           input_array[0]=total;        //set first index of input array to total
+                           $("#output").empty();        //clear display
+                           $("#output").append(total);  //append the value of total to the display
+                           input_index=0;               //set input index to 0
+                           console.log(total);          //console log total to make sure the product is displaying
+                           break;                       //break out of the case
+                       case "/":                        // test to see if the operator is equal to '/'
+                           total=num1/num2;             //store the quotient of num1/num2 into total
+                           input_array=[''];            //set input array to empty string
+                           input_array[0]=total;        //set first index of input array to total
+                           $("#output").empty();        //clear display
+                           $("#output").append(total);  //append the value of total to the display
+                           input_index=0;               //set input index to 0
+                           console.log(total);          //console log total to make sure the quotient is displaying
+                           break;                       //break out of the case
+                        default:                        //set default case if there are no operators
+                           total=0;                     //total is set to 0 in default
                    }
+                   //LFZ END
                 }
 
                 function clear() {
